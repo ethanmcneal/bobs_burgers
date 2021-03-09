@@ -1,8 +1,28 @@
+import { useState } from "react"
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+const dummyData = [
+    {name: 'Taco'},
+    {name: 'Burger'}
+]
+
 const Foods = () => {
+    const renderFoods = () => {
+        return dummyData.map (food => {
+            return (
+                <Link to={`/foods/${food.id}`}>
+                <div>
+                    <h2>{food.name}</h2>
+                    
+                </div>
+                </Link>
+            )
+        })
+    }
     return (
         <div>
-            <h1>Foods</h1>
+            {renderFoods()}
         </div>
     )
 }
