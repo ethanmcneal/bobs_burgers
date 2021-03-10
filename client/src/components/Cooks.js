@@ -13,12 +13,12 @@ const Cooks = () => {
     },[])
 
     const [cooks, setCooks] = useState([])
-        // where and why is cooks being used in the useState, but not setCooks or useState.
-        // basically how is this working?
-    const getCooks = async () =>{
+       
+    const getCooks = async () => {
         try{
             let res = await axios.get('/api/cooks')
             setCooks(res.data)
+            console.log(res)
         } catch(err){
             alert('error occurred please look at the console')
         }
@@ -30,7 +30,7 @@ const Cooks = () => {
                  <div>
                     < br />
                      <h2>The cook's name is: {cook.name}</h2>
-                    <h3>Their specialty is: {cook.specialty}</h3>
+                     <h3>Their specialty is: {cook.specialty}</h3>
                  </div>
             )
         })
