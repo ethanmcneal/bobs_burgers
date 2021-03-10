@@ -3,15 +3,15 @@ class Api::RestaurantsController < ApplicationController
   before_action: set_food
 
   def index
-    render json: @food.restaurant.all
+    render json: @food.restaurants
   end
 
   def show
-    render json: @food.restaurant.find(params[:id])
+    render json: @food.restaurants.find(params[:id])
   end
   
   def create
-    restaurant = @food.restaurant.new(restaurant_params)
+    restaurant = @food.restaurants.new(restaurant_params)
     if restaurant.save
         render json: restaurant
     else
@@ -20,7 +20,7 @@ class Api::RestaurantsController < ApplicationController
   end
   
   def update
-    restaurant = @food.restaurant.find(params[:id])
+    restaurant = @food.restaurants.find(params[:id])
     if restaurant.update(restaurant_params)
       render json: restaurant
     else
@@ -29,7 +29,7 @@ class Api::RestaurantsController < ApplicationController
   end
   
   def destroy
-    restaurant = @food.restaurant.find(params[:id]).destroy
+    restaurant = @food.restaurants.find(params[:id]).destroy
     render json: restaurant
   end
   

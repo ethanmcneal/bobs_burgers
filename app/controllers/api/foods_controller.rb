@@ -5,7 +5,8 @@ def index
 end
 
 def show
-  render json: Food.find(params[:id])
+  food = Food.find(params[:id])
+  render json: {food: food, restaurants: food.restaurants}
 end
 
 def create
