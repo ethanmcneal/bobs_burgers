@@ -1,3 +1,3 @@
 class Food < ApplicationRecord
-    has_many :restaurants, dependant: :destroy
+    has_many :restaurants, dependent: :destroy
 end
