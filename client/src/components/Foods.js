@@ -7,9 +7,10 @@ const dummyData = [
     {name: 'Burger'}
 ]
 
-const Foods = () => {
+const Foods = (props) => {
+    const {foods} = props
     const renderFoods = () => {
-        return dummyData.map (food => {
+        return foods.map (food => {
             return (
                 <Link to={`/foods/${food.id}`}>
                 <div>
