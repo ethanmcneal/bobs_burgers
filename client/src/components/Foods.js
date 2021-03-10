@@ -19,8 +19,12 @@ const Foods = (props) => {
         })
     }
     return (
-        <div>
+        <div style={{display:'flex', justifyContent:'space-between'}}>
+            <div>
             {renderFoods()}
+            </div>
+            
+            
         </div>
     )
 }
