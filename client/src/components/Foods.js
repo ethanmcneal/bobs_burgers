@@ -2,10 +2,7 @@ import { useState } from "react"
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const dummyData = [
-    {name: 'Taco'},
-    {name: 'Burger'}
-]
+
 
 const Foods = (props) => {
     const {foods} = props
