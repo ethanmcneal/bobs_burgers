@@ -5,10 +5,12 @@ import Foods from './components/Foods';
 import Cooks from './components/Cooks';
 import Homepage from './components/Homepage';
 import Food from './components/Food';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <>
+    <Navbar />
     <Switch>
       <Route exact path = '/' component={Homepage} />
       <Route exact path = '/foods/:id' component={Food} />
