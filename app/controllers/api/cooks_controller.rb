@@ -6,7 +6,8 @@ def index
 end
 
 def show
-  render json: Cook.find(params[:id])
+  cook = Cook.find(params[:id])
+  render json: {cook: cook}
 end
 
 def create
