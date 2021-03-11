@@ -1,9 +1,14 @@
-import { Card } from "semantic-ui-react"
+import { Card, Button } from "semantic-ui-react"
+import {useState, useEffect} from "react"
+import EditRestaurantForm from "./EditRestaurant"
 
 
 const Restaurant = (props) => {
   const {foodId, id, name, address} = props
+  const [showform, setshowform] = useState(false)
+  
   return(
+
     <div>
       <Card>
         <Card.Content>
@@ -13,6 +18,8 @@ const Restaurant = (props) => {
             {address}
           </Card.Description>
         </Card.Content>
+        < Button onClick={ ()=>{setshowform(!showform)}}>Edit</Button>
+        {showform && <EditRestaurantForm/>}
       </Card>
     </div>
   )
