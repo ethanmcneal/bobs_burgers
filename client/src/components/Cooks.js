@@ -32,6 +32,11 @@ const Cooks = () => {
         history.push('/cooks')
     }
 
+    const editCook = async(id) => {
+        let res = await axios.push(`/api/cooks/${id}`)
+        history.push('/cooks')
+    }
+
     const renderCooks = () => {
         return cooks.map ( cook => {
             return (
@@ -41,6 +46,10 @@ const Cooks = () => {
                      <h3>Their specialty is: {cook.specialty}</h3>
                     <Button onClick={()=>deleteCook(cook.id)}>Delete</Button>
                      {/* put update button here */}
+                     {/* <Button onClick={()=>update} */}
+                     {/* <Link to='/cooks/new'>
+                    <Button>Update Cook</Button>
+                        </Link> */}
                  </div>
             )
         })
