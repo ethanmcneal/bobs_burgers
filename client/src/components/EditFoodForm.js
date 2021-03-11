@@ -7,11 +7,11 @@ const EditFoodForm = (props) => {
     const {defaultName} = props
     const {id} = useParams()
    
-    const [name, setName] = useState('')
+    const [name, setName] = useState(defaultName)
     const history = useHistory()
     const handleSubmit = async() =>{
         try{
-            let res = axios.put(`/api/foods/${id}`,{name})
+            let res = await axios.put(`/api/foods/${id}`,{name})
             setName(res.data)
             history.push('/')
         }catch(err){
@@ -30,7 +30,7 @@ const EditFoodForm = (props) => {
                 <input value={name}
                 onChange={(e) => setName(e.target.value)}
                 defaultValue={defaultName}
-                placeholder={`${defaultName}`} />
+                placeholder='Edit name' />
                 
                 </Form.Field>
                 <Button type='submit'>Edit</Button>
