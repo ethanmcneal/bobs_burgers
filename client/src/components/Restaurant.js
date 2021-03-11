@@ -19,7 +19,7 @@ const Restaurant = (props) => {
           </Card.Description>
         </Card.Content>
         < Button onClick={ ()=>{setshowform(!showform)}}>Edit</Button>
-        {showform && <EditRestaurantForm/>}
+        {showform && <EditRestaurantForm nameInt={name} foodId={foodId} addressInt={address} restaurantId={id}/>}
       </Card>
     </div>
   )

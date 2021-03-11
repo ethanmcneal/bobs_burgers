@@ -1,6 +1,6 @@
 class Api::RestaurantsController < ApplicationController
 
-  before_action: set_food
+  before_action :set_food
 
   def index
     render json: @food.restaurants
