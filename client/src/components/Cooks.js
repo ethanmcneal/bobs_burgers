@@ -30,7 +30,12 @@ const Cooks = () => {
     const deleteCook = async(id) => {
         let res = await axios.delete(`/api/cooks/${id}`)
         history.push('/cooks')
+        window.location.reload()
     }
+
+    // const reload =()=>{
+    //     w
+    // }
 
     const editCook = async(id) => {
         let res = await axios.push(`/api/cooks/${id}`)
