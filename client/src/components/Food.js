@@ -2,12 +2,14 @@ import axios from 'axios'
 import {useEffect, useState} from 'react'
 import {useParams, useHistory, Link} from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
+import EditFoodForm from './EditFoodForm'
 import Restaurant from './Restaurant'
 
 const Food = () => {
   const {id} = useParams()
   const [food, setFood] = useState([])
   const [restaurants, setRestaurants] = useState([])
+  const [showForm, setShowForm] = useState(false)
   let history = useHistory();
 
   useEffect(() => {
@@ -34,11 +36,19 @@ const Food = () => {
 
   return (
     <>
+    <div style={{display:'flex', justifyContent:'space-between'}}>
     <h1>{food.name}</h1>
+    <Button onClick={deleteFood} color='red'>delete</Button>
+    <Button onClick={()=> history.goBack()}>Go BAAAAACK!</Button>
+    </div>
+    <div>
+      
+    <Button onClick={() => {setShowForm(!showForm)}}>{showForm ? 'Hide Edit Form' : 'Show Edit Form'}</Button>
+    {showForm && <EditFoodForm defaultName={food.name}/>}
+    </div>
     <h3>{renderRestaurants()}</h3>
 
-    <Button onClick={deleteFood}>delete</Button>
-    <Button onClick={()=> history.goBack()}>Go BAAAAACK!</Button>
+    
     </>
   )
 
