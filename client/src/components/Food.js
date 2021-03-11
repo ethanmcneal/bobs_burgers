@@ -31,7 +31,7 @@ const Food = () => {
   }
 
   const renderRestaurants = ()=>{
-    return restaurants.map(restaurant => <Restaurant key={restaurant.id} foodId={id} {...restaurant}/>)
+    return restaurants.map(restaurant => <Restaurant key={restaurant.id} foodId={id} restaurant={restaurant}/>)
   }
 
   return (

@@ -3,8 +3,8 @@ import {useState, useEffect} from "react"
 import EditRestaurantForm from "./EditRestaurant"
 
 
-const Restaurant = (props) => {
-  const {foodId, id, name, address} = props
+const Restaurant = ({foodId, restaurant}) => {
+  // const {foodId, id, name, address} = props
   const [showform, setshowform] = useState(false)
   
   return(
@@ -12,14 +12,14 @@ const Restaurant = (props) => {
     <div>
       <Card>
         <Card.Content>
-          <Card.Header>{name}</Card.Header>
-          <Card.Meta>{id}</Card.Meta>
+          <Card.Header>{restaurant.name}</Card.Header>
+          <Card.Meta>{restaurant.id}</Card.Meta>
           <Card.Description>
-            {address}
+            {restaurant.address}
           </Card.Description>
         </Card.Content>
         < Button onClick={ ()=>{setshowform(!showform)}}>Edit</Button>
-        {showform && <EditRestaurantForm nameInt={name} foodId={foodId} addressInt={address} restaurantId={id}/>}
+        {showform && <EditRestaurantForm  foodId={foodId} restaurant={restaurant}/>}
       </Card>
     </div>
   )
