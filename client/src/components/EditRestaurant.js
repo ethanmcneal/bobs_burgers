@@ -3,16 +3,16 @@ import axios from 'axios'
 import { useState, } from 'react'
 import {useParams} from 'react-router-dom'
 
-const EditRestaurantForm = (props) => {
-    const {nameInt, addressInt, restaurantId, foodId} = props
-    const [name, setName] = useState(nameInt)
-    const [address,setAddress] = useState('')
+const EditRestaurantForm = ({restaurant, foodId}) => {
+    // const {nameInt, addressInt, restaurantId, foodId} = props
+    const [name, setName] = useState(restaurant.name)
+    const [address,setAddress] = useState(restaurant.address)
 
     // const {foodId} = useParams()
     const handleSubmit = async()=>{
 
         try{
-            let res = await axios.put(`/api/foods/${foodId}/restaurants/${restaurantId}`,{name, address})
+            let res = await axios.put(`/api/foods/${foodId}/restaurants/${restaurant.id}`,{name, address})
             setName(res.data.name)
             setAddress(res.data.address)
 
@@ -42,7 +42,7 @@ const EditRestaurantForm = (props) => {
             <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            defaultValue={addressInt}
+            defaultValue={address}
             />
         </Form.Field>
         <Button type='submit'>Edit</Button>
