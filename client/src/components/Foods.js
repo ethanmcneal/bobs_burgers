@@ -1,6 +1,7 @@
 import { useState } from "react"
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Card } from "semantic-ui-react"
 
 
 
@@ -10,10 +11,12 @@ const Foods = (props) => {
         return foods.map (food => {
             return (
                 <Link to={`/foods/${food.id}`}>
-                <div>
-                    <h2>{food.name}</h2>
-                    
-                </div>
+               <Card>
+                <Card.Content>
+               <Card.Header>{food.name}
+                </Card.Header> 
+                </Card.Content>
+                </Card>
                 </Link>
             )
         })
@@ -29,3 +32,4 @@ const Foods = (props) => {
     )
 }
 export default Foods
+
