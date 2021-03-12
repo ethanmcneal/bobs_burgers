@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import {useParams, useHistory, Link} from 'react-router-dom'
-import { Button, Card, Grid } from 'semantic-ui-react'
+import { Button, Card, } from 'semantic-ui-react'
 import EditFoodForm from './EditFoodForm'
 import Restaurant from './Restaurant'
 
@@ -50,9 +50,11 @@ const Food = () => {
       </div>
     </Card>
     </div>
-    <div>
+    <Link to={`/foods/${food.id}/restaurants/new`}>
+      <Button>New restaurant</Button>
+      </Link>
     <Button onClick={()=> history.goBack()}>Go BAAAAACK!</Button> 
-    </div>
+    
     <div >
     {renderRestaurants()} 
     </div>
