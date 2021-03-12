@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
 import {Button} from 'semantic-ui-react'
+import CookUpdate from "./CookUpdate"
 
 
 
@@ -14,6 +15,7 @@ const Cooks = () => {
     },[])
 
     const [cooks, setCooks] = useState([])
+    const [showForm, setShowForm] = useState(false)
     
     let history = useHistory()
        
@@ -21,7 +23,7 @@ const Cooks = () => {
         try{
             let res = await axios.get('/api/cooks')
             setCooks(res.data)
-            console.log(res)
+            // console.log(res)
         } catch(err){
             alert('error occurred please look at the console')
         }
@@ -33,14 +35,10 @@ const Cooks = () => {
         window.location.reload()
     }
 
-    // const reload =()=>{
-    //     w
+    // const editCook = async(id) => {
+    //     let res = await axios.push(`/api/cooks/${id}`)
+    //     history.push('/cooks')
     // }
-
-    const editCook = async(id) => {
-        let res = await axios.push(`/api/cooks/${id}`)
-        history.push('/cooks')
-    }
 
     const renderCooks = () => {
         return cooks.map ( cook => {
@@ -49,12 +47,9 @@ const Cooks = () => {
                     < br />
                      <h2>The cook's name is: {cook.name}</h2>
                      <h3>Their specialty is: {cook.specialty}</h3>
-                    <Button onClick={()=>deleteCook(cook.id)}>Delete</Button>
-                     {/* put update button here */}
-                     {/* <Button onClick={()=>update} */}
-                     {/* <Link to='/cooks/new'>
-                    <Button>Update Cook</Button>
-                        </Link> */}
+                     <Button onClick={()=>deleteCook(cook.id)}>Delete</Button>
+                     <Button onClick={ ()=> {setShowForm(!showForm)}}>Edit</Button>
+                     {showForm && <CookUpdate key={cook.id} cook={cook} /*name={cook.name} specialty={cook.specialty}*//>}
                  </div>
             )
         })
