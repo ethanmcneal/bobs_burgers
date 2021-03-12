@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import {useParams, useHistory, Link} from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Card, Grid } from 'semantic-ui-react'
 import EditFoodForm from './EditFoodForm'
 import Restaurant from './Restaurant'
 
@@ -36,19 +36,26 @@ const Food = () => {
 
   return (
     <>
-    <div style={{display:'flex', justifyContent:'space-between'}}>
-    <h1>{food.name}</h1>
-    <Button onClick={deleteFood} color='red'>delete</Button>
-    <Button onClick={()=> history.goBack()}>Go BAAAAACK!</Button>
+    <div >
+    
+    <Card fluid color='red' style={{display:'flex', justifyContent:'space-between'}}>
+      <h1>{food.name}</h1>
+      
+      <div style={{display:'flex'}}>
+    
+    <Button onClick={deleteFood} color='red' style={{width:'200px'}}>delete</Button>
+    
+    <Button onClick={() => {setShowForm(!showForm)}} style={{width:'200px'}}>{showForm ? 'Hide Edit Form' : 'Show Edit Form'}</Button>
+    {showForm && <EditFoodForm defaultName={food.name}/>}
+      </div>
+    </Card>
     </div>
     <div>
-      
-    <Button onClick={() => {setShowForm(!showForm)}}>{showForm ? 'Hide Edit Form' : 'Show Edit Form'}</Button>
-    {showForm && <EditFoodForm defaultName={food.name}/>}
+    <Button onClick={()=> history.goBack()}>Go BAAAAACK!</Button> 
     </div>
-    <h3>{renderRestaurants()}</h3>
-
-    
+    <div >
+    {renderRestaurants()} 
+    </div>
     </>
   )
 
