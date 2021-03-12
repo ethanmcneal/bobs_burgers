@@ -6,7 +6,7 @@ import Food from "./Food"
 import { useHistory } from "react-router-dom"
 
 
-const Restaurant = ({foodId, restaurant}) => {
+const Restaurant = ({foodId, restaurant, showFood}) => {
   // const {foodId, id, name, address} = props
   const [showForm, setShowForm] = useState(false)
   const history = useHistory()
@@ -24,7 +24,7 @@ const Restaurant = ({foodId, restaurant}) => {
   if (showForm) {
     return ( 
       <Card>
-    <EditRestaurantForm  foodId={foodId} restaurant={restaurant}/>
+    <EditRestaurantForm  foodId={foodId} restaurant={restaurant} showFood={showFood}/>
     < Button onClick={ ()=>{setShowForm(!showForm)}}>Hide Form</Button>
     </Card>
     )

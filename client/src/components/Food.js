@@ -31,7 +31,7 @@ const Food = () => {
   }
 
   const renderRestaurants = ()=>{
-    return restaurants.map(restaurant => <Restaurant key={restaurant.id} foodId={id} restaurant={restaurant}/>)
+    return restaurants.map(restaurant => <Restaurant key={restaurant.id} foodId={id} restaurant={restaurant} showFood={showFood}/>)
   }
 
   return (
@@ -46,7 +46,7 @@ const Food = () => {
     <Button onClick={deleteFood} color='red' style={{width:'200px'}}>delete</Button>
     
     <Button onClick={() => {setShowForm(!showForm)}} style={{width:'200px'}}>{showForm ? 'Hide Edit Form' : 'Show Edit Form'}</Button>
-    {showForm && <EditFoodForm defaultName={food.name}/>}
+    {showForm && <EditFoodForm defaultName={food.name} showFood={showFood}/>}
       </div>
     </Card>
     </div>

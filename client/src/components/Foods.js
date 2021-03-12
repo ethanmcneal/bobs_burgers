@@ -6,7 +6,7 @@ import { Card } from "semantic-ui-react"
 
 
 const Foods = (props) => {
-    const {foods} = props
+    const {foods, showFoods} = props
     const renderFoods = () => {
         return foods.map (food => {
             return (
